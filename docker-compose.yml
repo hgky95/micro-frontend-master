@@ -1,0 +1,57 @@
+version: '3.3'
+
+services:
+  # ---------------------------
+  # Team One
+  # ---------------------------
+  team-one:
+    container_name: "team-one"
+    build: ../micro-frontend-team-one
+    image: team-one
+    networks:
+      - micro-frontend
+
+  # ---------------------------
+  # Team Two
+  # ---------------------------
+  team-two:
+    container_name: "team-two"
+    build: ../micro-frontend-team-two
+    image: team-two
+    networks:
+      - micro-frontend
+
+  # ---------------------------
+  # Team Three
+  # ---------------------------
+  team-three:
+    container_name: "team-three"
+    hostname: "team-three"
+    build: ../micro-frontend-team-three
+    image: team-three
+    networks:
+      - micro-frontend
+
+  # ---------------------------
+  # Application
+  # ---------------------------
+  application:
+    container_name: application
+    image: application
+    build: ./application
+    networks:
+      - micro-frontend
+    depends_on: 
+      - team-one
+      - team-two
+      - team-three
+    ports: 
+      - 80:80
+      - 443:443
+      - 8001:8001
+      - 8002:8002
+      - 8003:8003
+
+networks:
+  micro-frontend:
+    driver: bridge
