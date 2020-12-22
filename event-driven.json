@@ -1,0 +1,29 @@
+Team 1:
+event: {
+	name: "team-one-current-amount",
+	data: {
+		amount: 0
+	}
+}
+
+Team 2:
+event: {
+	name: "team-two-sell",
+	data: {
+		product-type: ''
+	}
+}
+event: {
+	name: "team-two-buy",
+	data: {
+		product-type: ''
+	}
+}
+
+Team 3:
+event: {
+	name: "team-three-update-total",
+	data: {
+		amount: 0
+	}
+}
